@@ -14,16 +14,8 @@ model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 st.title("Reconocimiento de Imágenes")
-#st.write("Versión de Python:", platform.python_version())
-#image = Image.open('OIG5.jpg')
-#st.image(image, width=350)
 
 import base64
-
-with open("OIG7.jpg", "rb") as f:
-    b64 = base64.b64encode(f.read()).decode()
-st.html(f'<img src="data:image/jpeg;base64,{b64}" width="350">')
-
 
 with st.sidebar:
     st.subheader("Usando un modelo entrenado en teachable Machine puedes Usarlo en esta app para identificar")
@@ -49,8 +41,6 @@ if img_file_buffer is not None:
     prediction = model.predict(data)
     print(prediction)
     if prediction[0][0]>0.5:
-      st.header('Izquierda, con Probabilidad: '+str( prediction[0][0]) )
+      st.header('Welcome Estefania, con Probabilidad: '+str( prediction[0][0]) )
     if prediction[0][1]>0.5:
-      st.header('Arriba, con Probabilidad: '+str( prediction[0][1]))
-    #if prediction[0][2]>0.5:
-    # st.header('Derecha, con Probabilidad: '+str( prediction[0][2]))
+      st.header('Welcome Juan, con Probabilidad: '+str( prediction[0][1]))
